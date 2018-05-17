@@ -8,8 +8,8 @@ class Album(models.Model):     # This will become a table in the database   AND 
     album_logo = models.CharField(max_length = 1000)
 
 
-def __str__(self):
-    return self.artist + " - " + self.album_title
+    def __str__(self):   # Remember the indentation matters, this function was supposed to be inside the Album class as it works for Album >:(
+        return self.artist + " - " + self.album_title
 
 
 class Song(models.Model):
