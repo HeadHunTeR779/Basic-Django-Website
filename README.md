@@ -1,1 +1,1 @@
-# Basic Django Websit
+# Basic Django Website
