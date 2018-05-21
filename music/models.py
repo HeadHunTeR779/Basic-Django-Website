@@ -16,6 +16,7 @@ class Song(models.Model):
     album = models.ForeignKey(Album, on_delete = models.CASCADE)                 #this on_delete just says that when an album is deleted, delete all the songs linked to it .!.
     file_type = models.CharField(max_length = 10)
     song_title = models.CharField(max_length = 250)
+    is_favorite = models.BooleanField(default = False)
 
     def __str__(self):
         return self.song_title
