@@ -12,7 +12,7 @@
 <form action='{% url 'music:favorite' album.id %}' method = 'post'>
   {% csrf_token %}
   {% for song in album.song_set.all %}
-  <input type='checkbox' id='song{{ forloop.counter }}'  name='song' value='{{song.id}}'>
+  <input type='radio' id='song{{ forloop.counter }}'  name='song' value='{{song.id}}'>
   <!-- value='{{sond.id}}' is to recognise what the user did while processing -->
   <label for='song{{ forloop.counter }}'>
     {{ song.song_title }}
@@ -20,7 +20,7 @@
       <img src='https://cdn3.vectorstock.com/i/1000x1000/94/77/sketch-heart-icon-love-design-graphic-vector-10069477.jpg'
        alt="Heart" title='Heart' width='16px' height='16px'>
     {% endif %}
-  </label>
+  </label><br>
   {% endfor %}
   <input type='submit' value='Favorite'>
 </form>
