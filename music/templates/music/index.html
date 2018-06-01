@@ -1,10 +1,45 @@
-{% if all_albums %}
-    <h3>Here's some Nasty Stuff :p</h3>
-    <ul>
-        {% for album in all_albums %}
-            <li><a href = "{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
-        {% endfor %}
-    </ul>
-{%else  %}
-    <h3>'Put some stuff in here'</h3>
-{% endif %}
+<!doctype html>
+<html>
+  <head>
+    <title>Music</title>
+<!--
+    <link rel="stylesheet" type="text/css" href="../../static/music/style.css">
+
+    IF you don'wanna use the below staticfiles method of django  UNCOMMENT THIS -->
+
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href={% static "music/style.css"  %}> <!-- Name is necessarily required as static -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- in href static is nothing but the directory I made in music this means staticfiles takes us to the main folder of the WEBAPP -->
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default">
+
+      <div class="container-fluid">
+
+        <!-- Logo -->
+        <div class="navbar-header">
+          <a class="navbar-header" href="{% url 'music:index' %}">HH7</a>
+        </div>
+
+      </div>
+
+    </nav>
+
+    {% if all_albums %}
+        <h3>My Albums</h3>
+        <ul>
+            {% for album in all_albums %}
+                <li><a href = "{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
+            {% endfor %}
+        </ul>
+    {%else  %}
+        <h3>'Put some stuff in here'</h3>
+    {% endif %}
+
+  </body>
+
+</html>
