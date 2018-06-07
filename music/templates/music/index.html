@@ -1,80 +1,14 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Music</title>
-<!--
-    <link rel="stylesheet" type="text/css" href="../../static/music/style.css">
+{% extends 'music/base.html'%}
 
-    IF you don'wanna use the below staticfiles method of django  UNCOMMENT THIS -->
-
-    {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <!-- in href static is nothing but the directory I made in music this means staticfiles takes us to the main folder of the WEBAPP -->
-    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
-
-  </head>
-
-  <body>
-
-      <!-- Navbar Declaration ------------------------------->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-
-        <!--Navbar Brand Declaration -->
-        <div id="Titlefont"><a class="navbar-brand" href="{% url 'music:index' %}">HeadHunTeR779</a></div>
-
-        <!-- The Button which collapses the Navbar when smaller screens used -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'music:index' %}"><svg-icon>Albums<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><svg-icon>Songs<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><svg-icon>Add Album<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><svg-icon>Logout<span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
-
-          <!-- Making the Search Box -->
-          <form class="form-inline">
-            <!-- [name] variable holds the name of the variable in which the query will be saved here we assigned it q and value is
-                the default value -->
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" name="q" value="" aria-label="Search">
-          <button class="btn btn-outline-danger btn-danger my-2 my-sm-0"  type="submit">Search</button>
-        </form>
-          </form>
-
-        </div>
-      </nav>
-
-
-    {% if all_albums %}
-        <h3>My Albums</h3>
-        <ul>
-            {% for album in all_albums %}
-                <li><a href = "{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
-            {% endfor %}
-        </ul>
+{% block body %}
+  {% if all_albums %}
+    <h3>My Albums</h3>
+    <ul>
+      {% for album in all_albums %}
+        <li><a href = "{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
+      {% endfor %}
+    </ul>
     {%else  %}
-        <h3>'Put some stuff in here'</h3>
-    {% endif %}
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-
-  </body>
-
-</html>
+    <h3>'Put some stuff in here'</h3>
+  {% endif %}
+{% endblock %}
