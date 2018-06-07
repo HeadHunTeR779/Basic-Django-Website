@@ -1,5 +1,14 @@
 body
 {
-  background-image: url("images/background.png");
+  background-image: url("images/background.jpg");
   background-size: cover;
+  font-family: 'Russo One', sans-serif;
+  margin: 0;
+  text-align: center;
+}
+
+#navbarShiftUp
+{
+  position: relative;
+  top: -24px;
 }
