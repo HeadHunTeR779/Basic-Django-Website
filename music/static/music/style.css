@@ -5,10 +5,11 @@ body
   font-family: 'Russo One', sans-serif;
   margin: 0;
   text-align: center;
+  padding-top: 80px;
+  padding-left: 20px;
 }
 
-#navbarShiftUp
+#Titlefont
 {
-  position: relative;
-  top: -24px;
+  font-family: 'Bungee Inline', cursive;
 }
