@@ -6,12 +6,9 @@ app_name = 'music'
 urlpatterns = [
 
     # /music/      === he is catching nothing
-    url(r'^$', views.index, name='index'),    #notice no () in function call
+    url(r'^$', views.IndexView.as_view(), name='index'),    #notice no () in function call
 
     # /music/album_id/    == he is saying anything of the REGULAR EXPRESSION TYPE i.e. a nos after music/
                         #and the number is saved in albun_id variable
-    url(r'^(?P<album_id>[0-9]+)/$', views.detail, name='detail'),  #notice no () in function call
-
-    # /music/album_id/favorite
-    url(r'^(?P<album_id>[0-9]+)/favorite/$', views.favorite, name='favorite'),
+    url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),  #notice no () in function call
 ]
