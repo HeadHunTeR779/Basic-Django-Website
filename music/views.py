@@ -14,7 +14,7 @@ class DetailView(generic.DetailView):
     model = Album  #What do you wanna display?
     template_name = 'music/details.html'  #Where's the template relative to the folder named templates.
 
-class AlbumCreate(generic.edit.CreateView):
+class AlbumCreate(generic.edit.CreateView): #see album_form for input form
     model = Album  #What do you wanna create?
     fields = ['artist', 'album_title', 'genre', 'album_logo']  #What fields you wanna fill up? Like Youtube may ask you to fill up Video
     #description tags and stuff but won't ask about Comments or views or likes although they are probably the fields of their video class.
