@@ -10,7 +10,7 @@
             <div class="card-header">
               {{ album.album_title }}
             </div>
-            <img class="card-img-top" src="{{ album.album_logo }}" alt="Card image cap" width="100px" height="250px">
+            <a href="{% url 'music:detail' album.id %}"><img class="card-img-top" src="{{ album.album_logo }}" alt="Card image cap" width="100px" height="250px"></a>
             <div class="card-body">
               <p class="card-text">Artist: <strong>{{ album.artist }}</strong><br>Genre: <strong>{{ album.genre }}</strong></p>
               <a href="{% url 'music:detail' album.id %}" class="btn btn-primary">View Details</a>
