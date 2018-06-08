@@ -1,0 +1,11 @@
+<!-- This is a generic form template no submit buttons or shit just the fields of the models.py -->
+
+{% for field in form %}
+  <div class="form-group">
+    <div>
+      <span class="text-danger small">{{ field.errors }}</span>
+    </div>
+    <label>{{ field.label_tag }}</label>
+    <div class="form-group">{{ field }}</div>
+  </div>
+{% endfor %}
