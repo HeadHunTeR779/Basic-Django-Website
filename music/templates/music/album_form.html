@@ -6,3 +6,8 @@ LOWERCASE!!! -->
 <!-- remember that {% include %} those parts which will be LESS frequently used and {% extends %} those which are like the generic
 template for all pages like the background and the title bar
 also the {% block %}     is IGNORED In {% include %} so be careful!! -->
+
+{% extends 'music/base.html' %}                <!-- Include the generic template i.e. the navabr and the background -->
+{% block title %}Add Album{% endblock %}        <!--  Change the title  to Add Album -->
+{% block Albums_navbar %}{% endblock %}       <!-- remove the active from the Albums -->
+{% block Add_Album_navbar %}{% endblock %}    <!-- add the active class to the Add Albums -->
