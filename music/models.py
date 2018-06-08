@@ -13,7 +13,7 @@ class Album(models.Model):     # This will become a table in the database   AND 
         return self.artist + " - " + self.album_title
 
     def get_absolute_url(self):
-        return resolve('music:detail', kwargs={'pk': self.pk})   #or self.id
+        return reverse('music:detail', kwargs={'pk': self.pk})   #or self.id
 
 
 class Song(models.Model):
