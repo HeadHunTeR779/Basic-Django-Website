@@ -16,4 +16,11 @@ urlpatterns = [
 
     # /music/album/add
     url(r'album/add/$', views.AlbumCreate.as_view(), name='album-add'),
+
+    # /music/album/update/2    2 is like the pk or you may say the id
+    url(r'album/update/(?P<pk>[0-9]+)/$', views.AlbumUpdate.as_view(), name='album-update'),
+
+    #/music/album/delete/2  2 is again like i said the primary key [pk]
+    url(r'album/delete/(?P<pk>[0-9]+)/$', views.AlbumDelete.as_view(), name='album-delete'),
+    
 ]

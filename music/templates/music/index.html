@@ -5,17 +5,30 @@
   <div class="container">
     <div class="row">
       {% for album in all_albums %}
-        <div class="col-md">
-          <div class="card" style="width: 18rem;">
-            <div class="card-header">
+        <div class="col-md-4">
+          <div class="card bg-dark" style="width: 18rem;">
+            <div class="card-header text-white">
               {{ album.album_title }}
             </div>
             <a href="{% url 'music:detail' album.id %}"><img class="card-img-top" src="{{ album.album_logo }}" alt="Card image cap" width="100px" height="250px"></a>
-            <div class="card-body">
+            <div class="card-body text-white">
               <p class="card-text">Artist: <strong>{{ album.artist }}</strong><br>Genre: <strong>{{ album.genre }}</strong></p>
               <a href="{% url 'music:detail' album.id %}" class="btn btn-primary">View Details</a>
+              {% load staticfiles %}
+              <form style="display: inline;" method="post" action="{% url 'music:album-delete' album.id %}">
+                  {% csrf_token %}
+                  <input name="album_id" type="hidden" value= " {{ album.id }}">  <!-- just the form is absolutely necessary -->
+                  <button type="submit" class="btn btn-default btn-sm">
+                    <img src="{% static 'music/images/bin.png' %}" width="20px" height="25px">
+                  </button>
+              </form>
+              <a href="{% url 'music:album-update' album.id %}">
+                <button type="submit" class="btn btn-default btn-sm">
+                  <img src="{% static 'music/images/settings.png' %}" width="20px" height="25px">
+                </button>
+              </a>
             </div>
-          </div>
+          </div><br>
         </div>
       {% endfor %}
     </div>
