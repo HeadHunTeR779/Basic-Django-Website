@@ -120,3 +120,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')#Save all the media files in a folder named 'media' inside the BASE DIRECTORY
+                                            #because since we made album_logo a FileField() from Charfiled() its no longer a simple string of
+                                            #data, hence we need to save it somehwere [server side]
+MEDIA_URL = '/media/'  #this is the url through which the browser accesses the media through HTTP  [client side]

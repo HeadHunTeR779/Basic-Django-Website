@@ -6,7 +6,7 @@ class Album(models.Model):     # This will become a table in the database   AND 
     artist = models.CharField(max_length = 250)
     album_title = models.CharField(max_length = 500)
     genre = models.CharField(max_length = 100)
-    album_logo = models.CharField(max_length = 1000)
+    album_logo = models.FileField()
 
 
     def __str__(self):   # Remember the indentation matters, this function was supposed to be inside the Album class as it works for Album >:(
