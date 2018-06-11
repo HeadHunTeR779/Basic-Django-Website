@@ -2,6 +2,12 @@ from django.views import generic
 from .models import Album
 from django.core.urlresolvers import reverse_lazy
 
+from django.contrib.auth import authenticate, login   #authenticate makes sure whether given pass and id is in databse or not
+                #login just gives them a session so that they dont have to authenticate again and again. means it keep the user "logged in"
+
+from django.shortcuts import render, redirect #redirect, redirects the user to a given page after login 
+from .forms import UserForm
+
 #EVERY VIEW MUST HAVE A URL!!!!
 
 class IndexView(generic.ListView):
