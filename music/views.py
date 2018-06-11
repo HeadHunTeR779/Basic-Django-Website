@@ -10,6 +10,8 @@ from django.shortcuts import render, redirect #redirect, redirects the user to a
 
 from .forms import UserForm
 
+from django.contrib.auth import logout #to logout the user obviously!
+
 #EVERY VIEW MUST HAVE A URL!!!!
 
 class IndexView(generic.ListView):
@@ -65,7 +67,7 @@ class UserFormView(generic.View):
 
             if user is not None:
 
-                if user.is_active():
+                if user.is_active:
                     login(request, user)
                     # use request.user.username and request.user." "   to find stuff once they are logged in
                     return redirect('music:index')
@@ -73,3 +75,8 @@ class UserFormView(generic.View):
 
 
         return render(request, self.template_name, {'form': form})
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('music:index')
