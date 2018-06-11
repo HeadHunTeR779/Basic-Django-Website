@@ -1,0 +1,17 @@
+{% extends 'music/base.html' %}                <!-- Include the generic template i.e. the navabr and the background -->
+{% block title %}User Registration{% endblock %}        <!--  Change the title  to Add Album -->
+{% block Albums_navbar %}{% endblock %}       <!-- remove the active from the Albums -->
+
+
+{% block body %}
+<!-- action nothing because we are not send the data anywhere DJANGO will do the magic here, method are of 2 types post and get in post
+the data is something like sent in HTTP form and in get its put into url in key-value form and enctype is set so becuase we will
+ask the user to upload a file in Albun Logo -->
+  <div class="container">
+    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}   <!-- whenever method="post" use this -->
+      {% include 'music/form-template.html' %}     <!-- all pages relative to templates -->
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+{% endblock %}

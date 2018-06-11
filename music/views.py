@@ -37,7 +37,7 @@ class AlbumDelete(generic.edit.DeleteView):
     success_url = reverse_lazy('music:index')
 
 class UserFormView(generic.View):
-    model=UserForm
+    form_class=UserForm
     template_name = 'music/registration-form.html'
 
     def get(self, request):         #When user opened the page and wants the empty form
@@ -47,7 +47,7 @@ class UserFormView(generic.View):
 
 
     # this is when user filled the form, now we process data,add them to the database, log them in, redirect them
-    def post(self, :request):       #get() and post() are basically instances of same page.
+    def post(self, request):       #get() and post() are basically instances of same page.
         form = self.form_class(request.POST)
 
         if form.is_valid():  #cleaned_data won't work wihout first calling this it validates every attribute email etc
@@ -59,3 +59,17 @@ class UserFormView(generic.View):
 
             user.set_password(password)       #special way for passwords because they are encrypted
             user.save()
+
+            #it checks whether this username and password is already in the database
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+
+                if user.is_active():
+                    login(request, user)
+                    # use request.user.username and request.user." "   to find stuff once they are logged in
+                    return redirect('music:index')
+
+
+
+        return render(request, self.template_name, {'form': form})

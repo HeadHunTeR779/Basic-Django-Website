@@ -23,4 +23,6 @@ urlpatterns = [
     #/music/album/delete/2  2 is again like i said the primary key [pk]
     url(r'album/delete/(?P<pk>[0-9]+)/$', views.AlbumDelete.as_view(), name='album-delete'),
 
+    url(r'register/$', views.UserFormView.as_view(), name='register'),
+
 ]
